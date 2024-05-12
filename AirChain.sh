@@ -156,18 +156,18 @@ function check_sync_status() {
 function add_validator() {
     read -p "请设置验证者的名字: " validator_name
     sudo tee ~/validator.json > /dev/null <<EOF
-    {
-      "pubkey": $(junctiond tendermint show-validator),
-      "amount": "1000000amf",
-      "moniker": "$validator_name",
-      "details": "run-node",
-      "commission-rate": "0.10",
-      "commission-max-rate": "0.20",
-      "commission-max-change-rate": "0.01",
-      "min-self-delegation": "1"
-    }
+{
+  "pubkey": $(junctiond tendermint show-validator),
+  "amount": "1000000amf",
+  "moniker": "$validator_name",
+  "details": "run-node",
+  "commission-rate": "0.10",
+  "commission-max-rate": "0.20",
+  "commission-max-change-rate": "0.01",
+  "min-self-delegation": "1"
+}
 
-    EOF
+EOF
         junctiond tx staking create-validator $HOME/validator.json --node $junctiond_RPC_PORT \
         --from=wallet \
         --chain-id=junction \
