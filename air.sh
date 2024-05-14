@@ -21,5 +21,5 @@ while true; do
     echo "当前时间（UTC+8）: $current_time"
     
     # 等待3到8小时
-    sleep $((10800 + RANDOM % 25200))
+    sleep $((10800 + RANDOM % 20000))
 done
