@@ -58,6 +58,11 @@ function delegate_staking() {
     # 获取验证者地址并替换 air.sh 中的占位符
     sed -i "s|\$validator|$air_validator|g" air.sh
 
+    # 获取port并替换 air.sh 中的占位符
+    junctiond_RPC_PORT=$(grep -E '^export junctiond_RPC_PORT=' ./bash_profile | cut -d= -f2-)
+    sed -i "s|\$junctiond_RPC_PORT|$junctiond_RPC_PORT|g" air.sh
+
+
   # 检查并关闭已存在的 screen 会话
   if screen -list | grep -q delegate_airchain; then
     screen -S delegate_airchain -X quit
@@ -102,8 +107,8 @@ function set_password() {
     fi
 
     # 输入钱包名
-    read -p "请输入钱包名: " wallet_name
-
+    wallet_name="wallet"
+    
     # 检查 ~/.bashrc 中是否已存在 air_wallet，如果存在则替换为新钱包名，如果不存在则追加
     if grep -q '^air_wallet=' ~/.bashrc; then
     sed -i "s|^air_wallet=.*$|air_wallet=$wallet_name|" ~/.bashrc
