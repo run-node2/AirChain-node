@@ -76,7 +76,7 @@ function delegate_staking() {
 # 查询钱包列表功能
 function check_wallet() {
     echo "正在查询中，请稍等"
-    airelad keys list
+    junctiond keys list
 
     read -p "按回车键返回主菜单"
 
@@ -114,7 +114,7 @@ function set_password() {
     echo "正在查询钱包地址"
     # 检查 ~/.bashrc 中是否已存在 air_address，如果存在则替换为新地址，如果不存在则追加
     if grep -q '^air_address=' ~/.bashrc; then
-    air_address=$(airelad keys show $wallet_name -a)
+    air_address=$(junctiond keys show $wallet_name -a)
     sed -i "s|^air_address=.*$|air_address=$air_address|" ~/.bashrc
     echo "钱包地址为: $air_address"
     else
@@ -125,11 +125,11 @@ function set_password() {
     echo "正在查询验证者地址"
     # 检查 ~/.bashrc 中是否已存在 air_validator，如果存在则替换为新验证器，如果不存在则追加
     if grep -q '^air_validator=' ~/.bashrc; then
-    air_validator=$(airelad keys show $wallet_name --bech val -a)
+    air_validator=$(junctiond keys show $wallet_name --bech val -a)
     sed -i "s|^air_validator=.*$|air_validator=$air_validator|" ~/.bashrc
     echo "验证者地址为: $air_validator"
     else
-    air_validator=$(airelad keys show $wallet_name --bech val -a)
+    air_validator=$(junctiond keys show $wallet_name --bech val -a)
     echo "air_validator=$air_validator" >> ~/.bashrc
     echo "验证者地址为: $air_validator"
     fi
