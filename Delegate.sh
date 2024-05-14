@@ -123,7 +123,7 @@ function set_password() {
     sed -i "s|^air_address=.*$|air_address=$air_address|" ~/.bashrc
     echo "钱包地址为: $air_address"
     else
-    air_address=$(airelad keys show $wallet_name -a)
+    air_address=$(junctiond keys show $wallet_name -a)
     echo "air_address=$air_address" >> ~/.bashrc
     echo "钱包地址为: $air_address"
     fi
