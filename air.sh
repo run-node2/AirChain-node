@@ -5,7 +5,7 @@ set +e
 
 while true; do
     expect -c '
-    spawn junctiond tx staking delegate $validator $amountamf --from $address --chain-id=junction --gas 10000amf --node $junctiond_RPC_PORT  -y
+    spawn junctiond tx staking delegate $validator $amountamf --from $address --chain-id=junction --fees 10000amf --node $junctiond_RPC_PORT  -y
     set password_attempts 0
     expect {
         "Enter keyring passphrase" {
