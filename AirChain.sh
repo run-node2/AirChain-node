@@ -203,7 +203,7 @@ function main_menu() {
         echo "5. 重启节点"
         echo "6. 卸载节点"
         echo "7. 手动质押"
-        echo "8. 自动质押(暂未实现)"
+        echo "8. 自动质押"
         read -p "请输入选项（1-8）: " OPTION
 
         case $OPTION in
