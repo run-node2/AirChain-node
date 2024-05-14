@@ -140,7 +140,7 @@ function import_wallet() {
 # 查询余额
 function check_balances() {
     wallet_name=wallet
-    junctiond query bank balances $(junctiond keys show $wallet_name --bech val -a) --node $junctiond_RPC_PORT
+    junctiond query bank balances "$wallet_name" --node $junctiond_RPC_PORT
 }
 
 function walletlist() {
