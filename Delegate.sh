@@ -59,8 +59,9 @@ function delegate_staking() {
     sed -i "s|\$validator|$air_validator|g" air.sh
 
     # 获取port并替换 air.sh 中的占位符
-    junctiond_RPC_PORT=$(grep -E '^export junctiond_RPC_PORT=' ./bash_profile | cut -d= -f2-)
+    junctiond_RPC_PORT=$(grep -E '^export junctiond_RPC_PORT=' ./bash_profile | cut -d= -f2- | sed 's|^tcp://||')
     sed -i "s|\$junctiond_RPC_PORT|$junctiond_RPC_PORT|g" air.sh
+
 
 
   # 检查并关闭已存在的 screen 会话
