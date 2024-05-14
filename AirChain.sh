@@ -139,8 +139,8 @@ function import_wallet() {
 
 # 查询余额
 function check_balances() {
-    read -p "请输入钱包地址: " wallet_address
-    junctiond query bank balances "$wallet_address" --node $junctiond_RPC_PORT
+    wallet_name=wallet
+    junctiond query bank balances $(junctiond keys show $wallet_name --bech val -a) --node $junctiond_RPC_PORT
 }
 
 function walletlist() {
