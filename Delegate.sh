@@ -175,7 +175,7 @@ function main_menu() {
   echo "3. 配置AirChain节点信息"
   echo "4. 开始自动质押amf代币(如果之前已经配置过AirChain节点信息，直接执行该步骤)"
   echo "5. 查询质押日志(关闭会话时请执行Ctrl+A 然后D 如果操作失误请重新执行第4步)"
-  read -p "请输入选项（1-4）: " OPTION
+  read -p "请输入选项（1-5）: " OPTION
 
   case $OPTION in
   1) install ;;
