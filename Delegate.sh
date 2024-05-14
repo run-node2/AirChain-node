@@ -73,7 +73,7 @@ function delegate_staking() {
 
   # 创建一个screen会话并运行命令
   screen -dmS delegate_airchain bash -c './air.sh'
-  echo "===========自动质押已开启；每隔3~10小时自动质押(保证交互时间不一致)==========="
+  echo "===========自动质押已开启；每隔3~5小时自动质押(保证交互时间不一致)==========="
   echo "执行完后请前往网站查询钱包地址确保有tx记录----https://testnet.airchains.io/validators"
   read -p "按回车键返回主菜单"
   # 返回主菜单
@@ -98,7 +98,7 @@ function set_password() {
     if [ ! -f ~/.bashrc ]; then
         touch ~/.bashrc
     fi
-
+    echo "如果下方没有查询到钱包地址和验证者地址，请重新执行该功能"
     read -p "请输入创建节点时的密码(自动质押需要输入密码,否则无法自动执行): " new_pwd
 
     # 检查 ~/.bashrc 中是否已存在 air_pwd，如果存在则替换为新密码，如果不存在则追加
@@ -143,8 +143,7 @@ function set_password() {
 
 
     # 输入质押数量
-  read -p "请输入每次自动质押时的数量: " amount
-
+  read -p "请输入每次自动质押时的数量: (建议输入1900000)" amount
     # 检查 ~/.bashrc 中是否已存在 air_wallet，如果存在则替换为新钱包名，如果不存在则追加
     if grep -q '^air_amount=' ~/.bashrc; then
     sed -i "s|^air_amount=.*$|air_amount=$amount|" ~/.bashrc
