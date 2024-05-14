@@ -29,7 +29,7 @@ while true; do
         exit 1
     fi
 
-    echo "将在1~5小时内继续自动质押art"
+    echo "将在1~5小时内继续自动质押mnf"
     current_time=$(TZ=UTC-8 date +"%Y-%m-%d %H:%M:%S")
     echo "当前时间（UTC+8）: $current_time"
     
