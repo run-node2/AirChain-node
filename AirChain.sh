@@ -222,7 +222,7 @@ function main_menu() {
         echo "8. 自动质押"
         echo "9. 下载快照"
         echo "10. 更新addrbook"
-        echo "11. 备份private_key和node_key到root目录"
+        echo "11. 备份private_key和node_key到root/airchain_key目录"
         read -p "请输入选项（1-11）: " OPTION
 
         case $OPTION in
