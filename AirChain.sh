@@ -199,6 +199,9 @@ function update(){
 wget https://smeby.fun/airchains-addrbook.json -O $HOME/.junction/config/addrbook.json && pm2 restart junctiond
 }
 
+function backup(){
+mkdir -p $HOME/airchain_key && cp /root/.junction/config/priv_validator_key.json $HOME/airchain_key && cp /root/.junction/config/node_key.json $HOME/airchain_key}
+
 # 主菜单
 function main_menu() {
     while true; do
@@ -219,7 +222,8 @@ function main_menu() {
         echo "8. 自动质押"
         echo "9. 下载快照"
         echo "10. 更新addrbook"
-        read -p "请输入选项（1-10）: " OPTION
+        echo "11. 备份private_key和node_key到root目录"
+        read -p "请输入选项（1-11）: " OPTION
 
         case $OPTION in
         1) install_node ;;
@@ -260,6 +264,7 @@ function main_menu() {
         8) Delegate ;;
         9) download ;;
         10) update ;;
+        11) backup ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
