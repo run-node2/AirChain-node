@@ -200,7 +200,8 @@ wget https://smeby.fun/airchains-addrbook.json -O $HOME/.junction/config/addrboo
 }
 
 function backup(){
-mkdir -p $HOME/airchain_key && cp /root/.junction/config/priv_validator_key.json $HOME/airchain_key && cp /root/.junction/config/node_key.json $HOME/airchain_key}
+mkdir -p $HOME/airchain_key && cp /root/.junction/config/priv_validator_key.json $HOME/airchain_key && cp /root/.junction/config/node_key.json $HOME/airchain_key
+}
 
 # 主菜单
 function main_menu() {
