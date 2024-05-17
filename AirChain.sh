@@ -186,6 +186,19 @@ function Delegate(){
     wget -O Delegate.sh https://raw.githubusercontent.com/run-node2/AirChain-node/main/Delegate.sh && chmod +x Delegate.sh && ./Delegate.sh
 }
 
+function download(){
+
+curl -L https://smeby.fun/airchains_snapshots.tar.lz4 | tar -I lz4 -xf - -C $HOME/.junction/data
+
+mv $HOME/.junction/priv_validator_state.json.backup $HOME/.junction/data/priv_validator_state.json
+
+pm2 restart junctiond
+}
+
+function update(){
+wget https://smeby.fun/airchains-addrbook.json -O $HOME/.junction/config/addrbook.json && pm2 restart junctiond
+}
+
 # 主菜单
 function main_menu() {
     while true; do
@@ -204,7 +217,9 @@ function main_menu() {
         echo "6. 卸载节点"
         echo "7. 手动质押"
         echo "8. 自动质押"
-        read -p "请输入选项（1-8）: " OPTION
+        echo "9. 下载快照"
+        echo "10. 更新addrbook"
+        read -p "请输入选项（1-10）: " OPTION
 
         case $OPTION in
         1) install_node ;;
@@ -243,6 +258,8 @@ function main_menu() {
         6) uninstall_node ;;
         7) manual_delegate ;;
         8) Delegate ;;
+        9) download ;;
+        10) update ;;
         *) echo "无效选项。" ;;
         esac
         echo "按任意键返回主菜单..."
